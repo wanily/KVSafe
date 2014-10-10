@@ -59,6 +59,9 @@
     if ([KVSTypeTranfer isValidIndexInArray:self index:index]) {
         id object = [_array objectAtIndex:index];
         NSAssert([self.plistScheme count] > 0, @"Plist Array none of items");
+        if ([self.plistScheme count] == 0) {
+            return object;
+        }
         id plistObject = [self.plistScheme firstObject];
         if ([object isKindOfClass:[NSDictionary class]] &&
             [plistObject isKindOfClass:[NSDictionary class]]) {
