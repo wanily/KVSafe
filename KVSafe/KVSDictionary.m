@@ -60,7 +60,10 @@
 - (id)objectForKey:(id)aKey {
     id object = [_dictionary objectForKey:aKey];
     NSAssert(self.plistScheme[aKey] != nil, @"Key has not defined in Plist file yet!");
-    if ([object isKindOfClass:[NSDictionary class]] &&
+    if (object == nil && [self.plistScheme[aKey] isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    else if ([object isKindOfClass:[NSDictionary class]] &&
         [self.plistScheme[aKey] isKindOfClass:[NSDictionary class]]) {
         return [object formatWithScheme:self.plistScheme[aKey]];
     }
