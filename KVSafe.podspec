@@ -37,8 +37,6 @@ Pod::Spec.new do |s|
 
   s.source_files  = "KVSafe", "KVSafe/*.{h,m}"
 
-  s.public_header_files = "KVSafe/KVSafe.h"
-
   s.requires_arc = true
 
 end
