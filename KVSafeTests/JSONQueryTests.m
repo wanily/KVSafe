@@ -94,7 +94,7 @@
 
 - (void)testArray {
     NSDictionary *testObject = @{@"name": @"Pony",
-                                 @"age": @25,
+                                 @"age": @"25",
                                  @"children": @[
                                          @{@"name": @"Tom", @"age":@"8"},
                                          @{@"name": @1111, @"age":@5},

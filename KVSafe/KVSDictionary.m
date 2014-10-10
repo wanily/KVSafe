@@ -68,7 +68,7 @@
              [self.plistScheme[aKey] isKindOfClass:[NSArray class]]){
         return [object formatWithScheme:self.plistScheme[aKey]];
     }
-    else if (![object isKindOfClass:[self.plistScheme[aKey] class]]) {
+    else if (![self compareKindsOfObject:object objectB:self.plistScheme[aKey]]) {
         if ([object isKindOfClass:[NSNumber class]] &&
             [self.plistScheme[aKey] isKindOfClass:[NSString class]]) {
             //Transfer NSNumber To NSString
@@ -83,6 +83,24 @@
     }
     else {
         return object;
+    }
+}
+
+- (BOOL)compareKindsOfObject:(id)argA objectB:(id)argB {
+    if ([argA isKindOfClass:[NSString class]]) {
+        return [argB isKindOfClass:[NSString class]];
+    }
+    else if ([argA isKindOfClass:[NSNumber class]]) {
+        return [argB isKindOfClass:[NSNumber class]];
+    }
+    else if ([argA isKindOfClass:[NSDate class]]) {
+        return [argB isKindOfClass:[NSDate class]];
+    }
+    else if ([argA isKindOfClass:[NSData class]]) {
+        return [argB isKindOfClass:[NSData class]];
+    }
+    else {
+        return [argA isKindOfClass:argB];
     }
 }
 
