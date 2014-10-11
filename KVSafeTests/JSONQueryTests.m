@@ -110,17 +110,24 @@
     XCTAssert(testObject[@"children"][3][@"name"] == nil, @"Pass");//never crash if array is out of bounds
 }
 
-- (void)testForgot {
+- (void)testErrorTypeArray {
     NSDictionary *testObject = @{@"name": @"Pony",
                                  @"age": @"25",
                                  @"children": @[
                                          @{@"name": @"Tom", @"age":@"8"},
                                          @{@"name": @1111, @"age":@5},
                                          @{@"name": [NSNull null], @"age": [NSNull null]}
-                                         ],
+                                         ]};
+    testObject = [testObject formatWithPlist:@"Hello"];
+}
+
+- (void)testForgot {
+    NSDictionary *testObject = @{@"name": @"Pony",
+                                 @"age": @"25",
+                                 @"children": @{},
                                  @"forgot": @"this"};
     testObject = [testObject formatWithPlist:@"Hello"];
-    XCTAssert([testObject[@"forgot"] isEqualToString:@"this"], @"Pass");
+    XCTAssert([testObject[@"children"] isKindOfClass:[NSArray class]], @"Pass");
 }
 
 //- (void)testShouldNeverPass {

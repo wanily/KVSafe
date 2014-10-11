@@ -105,6 +105,12 @@
     else if ([argA isKindOfClass:[NSData class]]) {
         return [argB isKindOfClass:[NSData class]];
     }
+    else if ([argA isKindOfClass:[NSArray class]]){
+        return [argB isKindOfClass:[NSArray class]];
+    }
+    else if ([argA isKindOfClass:[NSDictionary class]]) {
+        return [argB isKindOfClass:[NSDictionary class]];
+    }
     else {
         return [argA isKindOfClass:argB];
     }
